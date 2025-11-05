@@ -131,8 +131,7 @@ inline void HostStateMonitor::getInitialState()
                       HostState::property_names::current_host_state);
 
         auto reply = bus.call(method);
-        std::variant<std::string> currentState;
-        reply.read(currentState);
+        auto currentState = reply.unpack<std::variant<std::string>>();
 
         const std::string& stateValue = std::get<std::string>(currentState);
         powerStatusOn = stateValue.ends_with(".Running");
