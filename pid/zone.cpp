@@ -196,7 +196,7 @@ double DbusPidZone::getFailSafePercent(void)
 
     // In dbus/dbusconfiguration.cpp, the default sensor failsafepercent is 0 if
     // there is no setting in json.
-    // Therfore, if the max failsafe duty in _failSafeSensors is 0, set final
+    // Therefore, if the max failsafe duty in _failSafeSensors is 0, set final
     // failsafe duty to _zoneFailSafePercent.
     if ((*maxData).second.second == 0)
     {
