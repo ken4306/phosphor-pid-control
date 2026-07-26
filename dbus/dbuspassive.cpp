@@ -369,12 +369,14 @@ double DbusPassive::getMin(void)
 void DbusPassive::updateValue(double value, bool force)
 {
     _badReading = false;
+    _available = true;
 
     // Do not let a NAN, or other floating-point oddity, be used to update
     // the value, as that indicates the sensor has no valid reading.
     if (!(std::isfinite(value)))
     {
         _badReading = true;
+        _available = false;
 
         // Do not continue with a bad reading, unless caller forcing
         if (!force)
